@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background-color: #000;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+#elevatorScene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#elevatorPanel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 15px;
+    display: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.panel-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+
+.panel-label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#closeButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .button-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.floor-button {
+    background-color: #222;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 15px 10px;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 120px;
+}
+
+.floor-button:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+}
+
+.floor-button img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.floor-number {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.floor-name {
+    font-size: 12px;
+    text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.prompt-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+
+.prompt-circle {
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 10px;
+    margin-right: 3px;
+}
+
+#iframeContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 100;
+    display: none;
+}
+
+#projectFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.iframe-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 101;
+    display: flex;
+    gap: 10px;
+}
+
+.iframe-controls button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.iframe-controls button:hover {
+    background-color: #555;
+}
+
+#loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.elevator-loading-indicator {
+    width: 100px;
+    height: 150px;
+    background-color: #444;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.elevator-doors {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.left-door, .right-door {
+    width: 50%;
+    height: 100%;
+    background-color: #777;
+    transition: transform 1s ease-in-out;
+}
+
+.left-door {
+    transform: translateX(0);
+}
+
+.right-door {
+    transform: translateX(0);
+}
+
+.loading .left-door {
+    transform: translateX(-100%);
+}
+
+.loading .right-door {
+    transform: translateX(100%);
+}
+
+.floor-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    font-weight: bold;
+    z-index: -1;
+}
+
